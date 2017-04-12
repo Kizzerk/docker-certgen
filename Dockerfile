@@ -1,12 +1,12 @@
 FROM debian:latest
 
-COPY catcert.sh /catcert.sh
+COPY catcerts.sh /catcerts.sh
 
-RUN chmod +x /catcert.sh
+RUN chmod +x /catcerts.sh
 
 VOLUME /znc-data
 VOLUME /znc-cert
 
-CMD ["/catcert.sh"]
+CMD ["/catcerts.sh"]
 
 
