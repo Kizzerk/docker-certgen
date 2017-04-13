@@ -13,14 +13,13 @@ inDir='/znc-cert'
 outFile='/znc-data/znc.pem'
 
 while true; do
-	# If we fail to cat the cert files, just break the loop and exit
-	if ! data=$(cat "$inDir"/{key,cert,chain}.pem); then
+	if data=$(cat "$inDir"/key.pem <(echo) "$inDir"/cert.pem <(echo) "$inDir"/chain.pem); then
+		echo "$data" > "$outFile" &&
+			echo "Wrote '$outFile'." >&2
+	else
+		# If we fail to cat the cert files, don't write any output file
 		echo "Failed to read certificates from '$inDir'." >&2
-		break
 	fi
-
-	echo "$data" > "$outFile"
-	echo "Wrote '$outFile'." >&2
 
 	# Inotifywait waits for inode events (basically file events) such as when a file was modified.
 	# Note: the event names aren't necessarily all needed ones. See EVENTS in manual for inotifywait.
