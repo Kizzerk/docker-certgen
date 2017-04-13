@@ -14,7 +14,7 @@ outFile='/znc-data/cert.pem'
 
 while true; do
 	# If we fail to cat the cert files, just break the loop and exit
-	if ! data=$(cat "$inDir"/{privkey,cert,chain}.pem); then
+	if ! data=$(cat "$inDir"/{key,cert,chain}.pem); then
 		echo "Failed to read certificates from '$inDir'." >&2
 		break
 	fi
