@@ -10,7 +10,7 @@
 # Directory to read certificates/pem files from
 inDir='/znc-cert'
 # File to write the final certificate to
-outFile='/znc-data/cert.pem'
+outFile='/znc-data/znc.pem'
 
 while true; do
 	# If we fail to cat the cert files, just break the loop and exit
